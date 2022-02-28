@@ -104,20 +104,8 @@ document.onkeydown = function(ev) {
         filter_bridges(); mark_way_points() 
     }
 }
-function clear(){
-    var data = {  
-        wkts: ['LINESTRING(170704.30 579380.05, 232881.51 556890.42, 232881.51 556890.42)'],    
-        geometryType: govmap.geometryType.Polyline,  
-        defaultSymbol:  
-            {  
-            color: [255, 0, 80, 1],  
-            width: 1,  
-            },  
-        symbols: [],  
-        clearExisting: true,  
-        };  
-};
-function showExample(){
+
+function clearDrawings(){
     var data = {  
         wkts: ['LINESTRING(181638.5702018566 691584.9075372377, 230586.58476455236 683382.807799705)'],  
         names: ['p1'],  
