@@ -29,19 +29,6 @@ function paintline(){
     });  
 }
 
-//מיקוד על אמצע הארץ בפתיחת המפה
-
-// function focus_on_center() {
-//     let params = {
-//         keyword: "ארלוזורוב 1 תל אביב",
-//         type: govmap.geocodeType.AccuracyOnly
-//     };
-//     govmap.geocode(params).then(function (response) {
-//         console.log("focus_on_center",response.data[0]);
-//         govmap.zoomToXY({x: response.data[0].X,y: response.data[0].Y, level: 4, marker: false });
-//     });
-//}
-
 //יצירת סימונים על המפה
 
 function mark_way_points() {
