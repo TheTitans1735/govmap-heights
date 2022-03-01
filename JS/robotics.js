@@ -8,16 +8,20 @@ $(document).ready(function () {
             layers: ["TEMP_BRIDGE"],
             showXY: true,
             identifyOnClick: true,
-            level: 6,
+            level: 4,
+            center:{x:178586.579,y:666130.0514},
             layersMode: 2,
             zoomButtons: true
         });
-       focus_on_center();
+    //    focus_on_center();
 });
+
+//סרטוט מסלול
+
 let notify
 let tolerance
 function paintline(){
-    govmap.draw(govmap.drawType.Polyline).progress(function (response)  
+    govmap.draw(govmap.geometryType.POLYLINE).progress(function (response)  
     {  
         wkts: ['LINESTRING(170704.30 579380.05, 232881.51 556890.42, 232881.51 556890.42)'],    
        notify;false,
@@ -27,16 +31,16 @@ function paintline(){
 
 //מיקוד על אמצע הארץ בפתיחת המפה
 
-function focus_on_center() {
-    let params = {
-        keyword: "ארלוזורוב 1 תל אביב",
-        type: govmap.geocodeType.AccuracyOnly
-    };
-    govmap.geocode(params).then(function (response) {
-        console.log("focus_on_center",response.data[0]);
-        govmap.zoomToXY({x: response.data[0].X,y: response.data[0].Y, level: 4, marker: false });
-    });
-}
+// function focus_on_center() {
+//     let params = {
+//         keyword: "ארלוזורוב 1 תל אביב",
+//         type: govmap.geocodeType.AccuracyOnly
+//     };
+//     govmap.geocode(params).then(function (response) {
+//         console.log("focus_on_center",response.data[0]);
+//         govmap.zoomToXY({x: response.data[0].X,y: response.data[0].Y, level: 4, marker: false });
+//     });
+//}
 
 //יצירת סימונים על המפה
 
@@ -96,36 +100,23 @@ function filter_bridges() {
     govmap.filterLayers(params);
 
 }
-
-
+// יצירת האופציה של לחיצת מקש אנטר כדי לסנן במקום ללחוץ על כפתור החיפוש
 
 document.onkeydown = function(ev) {
     if (ev.code == 'Enter') { 
         filter_bridges(); mark_way_points() 
     }
 }
-
-function clearDrawings(){
-    var data = {  
-        wkts: ['LINESTRING(181638.5702018566 691584.9075372377, 230586.58476455236 683382.807799705)'],  
-        names: ['p1'],  
-        geometryType: govmap.geometryType.POLYLINE,  
-        defaultSymbol:  
-            {  
-            color: [255, 0, 80, 1],  
-            width: 1,  
-            },  
-        symbols: [],  
-        clearExisting: true,  
-        data: {  
-            tooltips: ['חדשות ynet'],  
-            headers: ['חדשות'],
-            bubbles: ['L-2,00.html'],  
-            bubbleUrl: 'https://www.ynet.co.il/home/0,7340,' 
-        }  
-        };  
-    govmap.displayGeometries(data).then(function (response)  
-    {  
-      console.log(response.data);
-    });  
+// ניקוי הסרטוטים מהמפה
+    function clearMap(){
+        govmap.clearDrawings();   
+    let params = {
+        keyword: "ארלוזורוב 1 תל אביב",
+        type: govmap.geocodeType.AccuracyOnly
+    };
+    govmap.geocode(params).then(function (response) {
+        console.log("focus_on_center",response.data[0]);
+        govmap.zoomToXY({x: response.data[0].X,y: response.data[0].Y, level: 4, marker: false });
+    });
 }
+

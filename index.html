@@ -25,7 +25,8 @@
             <input type="number" id="TRACK_H"></input>
             <button onClick="filter_bridges();mark_way_points()"> חפש </button>
             <button onClick="paintline()">שרטט מסלול</button>
-            <button onClick="showExample()">ניקוי המפה</button>
+            <button onClick="clearMap();document.getElementById('starting_point').value = '';document.getElementById('destination').value = '';document.getElementById('TRACK_H').value = ''">ניקוי המפה</button>
+           
 
             <!-- יצירת מקום בו תיווצר המפה -->
             <div id="map" style="height: 80%;padding-top:0.5cm">
