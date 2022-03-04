@@ -1,3 +1,4 @@
+
 //יצירת המפה והגדרות
 
 $(document).ready(function () {
@@ -13,9 +14,21 @@ $(document).ready(function () {
             layersMode: 2,
             zoomButtons: true
         });
-    //    focus_on_center();
+        var options = {
+            url: 'https://es.govmap.gov.il/TldSearch',
+            subjectId: 16399,
+            placeholder: "",
+            onInput: function onInput(res) {},
+            onSelect: function onSelect(res) {}
+        };
+        autocomplete(document.getElementById("starting_point"), options)
+autocomplete(document.getElementById("destination_point"), options)
 });
 
+
+
+
+    
 //סרטוט מסלול
 
 let notify
@@ -41,7 +54,7 @@ function mark_way_points() {
         console.log(response);
         let from = response.data[0]
         params = {
-            keyword: document.getElementById('destination').value,
+            keyword: document.getElementById('destination_point').value,
             type: govmap.geocodeType.AccuracyOnly
         };
         govmap.geocode(params).then(function (response) {
@@ -104,6 +117,9 @@ document.onkeydown = function(ev) {
     govmap.geocode(params).then(function (response) {
         console.log("focus_on_center",response.data[0]);
         govmap.zoomToXY({x: response.data[0].X,y: response.data[0].Y, level: 4, marker: false });
+        document.getElementById('starting_point').value = ''
+        document.getElementById('destination_point').value = ''
+        document.getElementById('TRACK_H').value = ''
+        govmap.clearGeometriesByName(['p1', 'p2']);
     });
 }
-

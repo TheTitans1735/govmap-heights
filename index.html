@@ -1,37 +1,60 @@
 <html xmlns="http://wwww.w3.org/1999/xhtml">
 
-    <head>
-        <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
-        <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
 
-        <script src="JS/robotics.js"></script>
-    </head>
+<head>
+    <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="https://www.govmap.gov.il/govmap/api/govmap.api.js"></script>
+    <script src="https://es.govmap.gov.il/TldSearch/Scripts/ac.js"></script>
+    <script src="JS/robotics.js"></script>
 
-    <body dir="rtl">
-        <div id="logos" style="padding: 0.5cm; text-align: center; display: block">
-            <img style="height: 1.5cm;" src="images/fll.png">
-            <img style="height: 1.6cm; margin-right: 3cm;" src="images/cargo connect.png">
-            <img style="height: 1.7cm; margin-left: 3cm; margin-right:  3cm;" src="images/titans.png">
-            <img style="height: 1.6cm; margin-left: 3cm;" src="images/מערכת חצב.png">
-            <img style="height: 1.4cm;" src="images/משרד התחבורה.png">
+    <link rel="stylesheet" href="https://es.govmap.gov.il/TldSearch/Scripts/ac.css">
+</head>
+
+<body dir="rtl">
+    <div id="logos" style="padding: 0.5cm; text-align: center; display: block">
+        <img style="height: 1.5cm;" src="images/fll.png">
+        <img style="height: 1.6cm; margin-right: 3cm;" src="images/cargo connect.png">
+        <img style="height: 1.7cm; margin-left: 3cm; margin-right:  3cm;" src="images/titans.png">
+        <img style="height: 1.6cm; margin-left: 3cm;" src="images/מערכת חצב.png">
+        <img style="height: 1.4cm;" src="images/משרד התחבורה.png">
+    </div>
+    <div style="border: 1cm; color: black; background-color: red; font-size: 22;" >
+<label style="align-content: center;">האתר הוא פרויקט לימודי ואין  לעשות בו שום שימוש תפעולי או אחר מעבר למסגרת התחרות שעבורה הוא פותח. בנוסף המידע המופיע באתר אינו שלם או מלא, אין לייחס לו כל מעמד או חשיבות ואינו נוסח מחייב של החוק</label>
+    </div>
+
+<!-- <marquee wwidth="60%" direction="right" height ="50px" loop="3" bgcolor="red" style="font-size: 25; border: 1cm black;">
+    האתר הוא פרויקט לימודי ואין  לעשות בו שום שימוש תפעולי או אחר מעבר למסגרת התחרות שעבורה הוא פותח. בנוסף המידע המופיע באתר אינו שלם או מלא, אין לייחס לו כל מעמד או חשיבות ואינו נוסח מחייב של החוק
+</marquee> -->
+
+    <!-- יצירת תיבות הטקסט והכפתור -->
+    <div id="controls" style="padding:0.5cm; background:plum; color:black" >
+        <div>
+            <span class="autocomplete">
+                <label for="starting_point">נקודת התחלה</label>
+                <input type="text" id="starting_point"  style="height: 20px;">
+            </span>
+            <span class="autocomplete">
+                <label for="destination">יעד הנסיעה</label>
+                <input type="text" id="destination_point"  style="height: 20px;" >
+            </span>
+            <span>
+                <label for="height">גובה המשאית במטרים</label>
+                <input type="number" id="TRACK_H" step="0.1" style="width: 50px;" style="height: 20px;" ></input>
+            </span>
+            <span>
+                <button onClick="filter_bridges();mark_way_points()"> חפש </button>
+                <button onClick="paintline()">שרטט מסלול</button>
+                <button onClick="clearMap()">ניקוי המפה</button>
+            </span>
+
         </div>
-        <!-- יצירת תיבות הטקסט והכפתור -->
-        <div id="controls" style="padding:0.5cm; background:plum; color:black">
-            <label for="starting_point">נקודת התחלה</label>
-            <input type="text" name="starting point" id="starting_point">
-            <label for="destination">יעד הנסיעה</label>
-            <input type="text" name="destination" id="destination">
-            <label for="height">גובה המשאית במטרים</label>
-            <input type="number" id="TRACK_H"></input>
-            <button onClick="filter_bridges();mark_way_points()"> חפש </button>
-            <button onClick="paintline()">שרטט מסלול</button>
-            <button onClick="clearMap();document.getElementById('starting_point').value = '';document.getElementById('destination').value = '';document.getElementById('TRACK_H').value = ''">ניקוי המפה</button>
-           
 
-            <!-- יצירת מקום בו תיווצר המפה -->
-            <div id="map" style="height: 80%;padding-top:0.5cm">
-            </div>
+
+
+        <!-- יצירת מקום בו תיווצר המפה -->
+        <div id="map" style="height: 80%;padding-top:0.5cm">
         </div>
-    </body>
+    </div>
+</body>
 
 </html>
