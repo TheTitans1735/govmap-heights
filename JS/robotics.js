@@ -4,7 +4,7 @@
 $(document).ready(function () {
     govmap.createMap('map',
         {
-            token: '5a4b8472-b95b-4687-8179-0ccb621c7990',
+            token: '23233477-3185-4bc4-9200-71cbb1b2b5b5',
             visibleLayers: ["TEMP_BRIDGE"],
             layers: ["TEMP_BRIDGE"],
             showXY: true,
@@ -14,6 +14,9 @@ $(document).ready(function () {
             layersMode: 2,
             zoomButtons: true
         });
+        
+        // השלמה אוטומטית של תיבות הטקסט
+
         var options = {
             url: 'https://es.govmap.gov.il/TldSearch',
             subjectId: 16399,
@@ -24,10 +27,6 @@ $(document).ready(function () {
         autocomplete(document.getElementById("starting_point"), options)
 autocomplete(document.getElementById("destination_point"), options)
 });
-
-
-
-
     
 //סרטוט מסלול
 
@@ -58,7 +57,7 @@ function mark_way_points() {
             type: govmap.geocodeType.AccuracyOnly
         };
         govmap.geocode(params).then(function (response) {
-             govmap.zoomToXY({x:from.X,y:from.Y,level:6 ,marker: false})
+              govmap.zoomToXY({x:from.X,y:from.Y,level:6 ,marker: false})
 
             console.log(response);
             let to = response.data[0]
@@ -107,7 +106,9 @@ document.onkeydown = function(ev) {
         filter_bridges(); mark_way_points() 
     }
 }
+
 // ניקוי הסרטוטים מהמפה
+
     function clearMap(){
         govmap.clearDrawings();   
     let params = {
