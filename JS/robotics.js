@@ -4,7 +4,7 @@
 $(document).ready(function () {
     govmap.createMap('map',
         {
-            token: '23233477-3185-4bc4-9200-71cbb1b2b5b5',
+            token: location.hostname === 'localhost' ? '5a4b8472-b95b-4687-8179-0ccb621c7990' : '23233477-3185-4bc4-9200-71cbb1b2b5b5',
             visibleLayers: ["TEMP_BRIDGE"],
             layers: ["TEMP_BRIDGE"],
             showXY: true,

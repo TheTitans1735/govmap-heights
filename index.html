@@ -32,27 +32,27 @@
 
     <!-- חלק רביעי : יצירת רקע למפה  -->
 
-    <div id="controls" style="padding:0.5cm; background:plum; color:black" >
+    <div id="controls" style="padding:0.5cm; background:plum; color:black;" >
         <div>
 
     <!--חלק חמישי : יצירת הכפתורים ותיבות הטקסט -->
 
             <span class="autocomplete">
-                <label for="starting_point">נקודת התחלה</label>
+                <label for="starting_point"">נקודת התחלה</label>
                 <input type="text" id="starting_point"  style="height: 20px;">
             </span>
             <span class="autocomplete">
-                <label for="destination">יעד הנסיעה</label>
+                <label for="destination"">יעד הנסיעה</label>
                 <input type="text" id="destination_point"  style="height: 20px;" >
             </span>
-            <span>
+            <span class="autocomplete">
                 <label for="height">גובה המשאית במטרים</label>
-                <input type="number" id="TRACK_H" step="0.1" style="width: 50px;" style="height: 20px;" ></input>
+                <input type="number" id="TRACK_H" step="0.1" style="width: 50px; height: 20px;" ></input>
             </span>
             <span>
                 <button onClick="filter_bridges();mark_way_points()"> חפש </button>
                 <button onClick="paintline()">שרטט מסלול</button>
-                <button onClick="clearMap()">ניקוי המפה</button>
+                <button onClick="clearMap()">איפוס</button>
             </span>
 
         </div>
